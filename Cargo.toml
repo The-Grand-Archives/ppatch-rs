@@ -9,6 +9,11 @@ crate-type = ["dylib"]
 
 [dependencies]
 
+[features]
+default = ["er"]
+ds3 = []
+er = []
+ac6 = []
 
 [profile.release]
 opt-level = 3
