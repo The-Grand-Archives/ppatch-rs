@@ -6,3 +6,4 @@
 compile_error!("Only one of the target game features (ds3, er, ac6) may be enabled");
 
 mod celua;
+mod param_file;
