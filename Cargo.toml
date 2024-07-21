@@ -8,6 +8,8 @@ authors = ["tremwil@gmail.com"]
 crate-type = ["dylib"]
 
 [dependencies]
+widestring = "1.1.0"
+fmt-derive = "0.1.2"
 
 [features]
 default = ["er"]

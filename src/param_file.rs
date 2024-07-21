@@ -1,5 +1,3 @@
-use std::{collections::BTreeMap, ffi::CStr, marker::PhantomData};
-
 #[repr(C)]
 #[derive(Debug, Clone, Copy)]
 struct ParamTypeOffset {
@@ -9,15 +7,10 @@ struct ParamTypeOffset {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, fmt_derive::Debug)]
 union ParamTypeBlock {
     param_type_buf: [u8; 32],
     offset: ParamTypeOffset,
-}
-impl std::fmt::Debug for ParamTypeBlock {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "ParamTypeBlock")
-    }
 }
 
 #[repr(C)]
