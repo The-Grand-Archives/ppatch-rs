@@ -10,12 +10,19 @@ crate-type = ["dylib"]
 [dependencies]
 widestring = "1.1.0"
 fmt-derive = "0.1.2"
+fnv = "1.0.7"
+num-traits = "0.2.19"
 
 [features]
 default = ["er"]
 ds3 = []
 er = []
 ac6 = []
+
+[profile]
+dev.overflow-checks = false
+test.overflow-checks = false
+bench.overflow-checks = false
 
 [profile.release]
 opt-level = 3
