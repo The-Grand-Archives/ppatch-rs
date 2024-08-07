@@ -42,7 +42,7 @@ pub struct DLAllocatorProxy {
     instance_ptr: &'static VTable,
 }
 unsafe impl DLAllocator for DLAllocatorProxy {
-    fn vmt(&self) -> *const fn() {
+    fn vmt(&self) -> VTable {
         return *self.instance_ptr;
     }
 }

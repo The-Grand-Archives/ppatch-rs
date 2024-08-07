@@ -1,6 +1,6 @@
 use std::u32;
 
-use num_traits::{PrimInt, Zero};
+use num_traits::PrimInt;
 
 use super::base::{FieldBlock, RowPatchId, RowPatcher};
 use crate::util::unaligned::Unaligned;

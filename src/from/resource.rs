@@ -16,7 +16,7 @@ pub struct FD4ResCapHolderItem {
 }
 
 unsafe impl FD4ComponentBase for FD4ResCapHolderItem {
-    fn vmt(&self) -> *const fn() {
+    fn vmt(&self) -> VTable {
         return self.vtable;
     }
 }

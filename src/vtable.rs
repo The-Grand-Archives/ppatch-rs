@@ -71,11 +71,11 @@ macro_rules! vtable_entries {
 
 macro_rules! vtable {
     () => {
-        fn vmt(&self) -> *const fn();
+        fn vmt(&self) -> $crate::vtable::VTable;
     };
 
     ($($defs:tt)*) => {
-        fn vmt(&self) -> *const fn();
+        fn vmt(&self) -> $crate::vtable::VTable;
         $crate::vtable::vtable_entries! { $($defs)* }
     };
 }
@@ -83,4 +83,7 @@ macro_rules! vtable {
 pub(crate) use vtable;
 pub(crate) use vtable_entries;
 
-pub type VTable = *const fn();
+#[cfg(all(target_os = "windows", target_pointer_width = "64"))]
+pub type VTable = *const extern "fastcall" fn();
+#[cfg(all(target_os = "windows", target_pointer_width = "32"))]
+pub type VTable = *const extern "thiscall" fn();
