@@ -5,10 +5,13 @@ use super::allocator::{DLAllocator, DLAllocatorProxy};
 #[repr(C)]
 #[derive(Debug)]
 pub struct DLVector<T, A: DLAllocator = DLAllocatorProxy> {
+    #[cfg(not(feature = "ds3"))]
     allocator: A,
     begin: *mut T,
     end: *mut T,
     buffer_end: *mut T,
+    #[cfg(feature = "ds3")]
+    allocator: A,
     phantom: PhantomData<[T]>,
 }
 

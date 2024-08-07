@@ -55,10 +55,13 @@ impl Char for u16 {
 #[derive(fmt_derive::Debug)]
 #[repr(C)]
 pub struct DLString<C: Char = u8, A: DLAllocator = DLAllocatorProxy> {
+    #[cfg(not(feature = "ds3"))]
     allocator: A,
     storage: C::Storage,
     len: usize,
     capacity: usize,
+    #[cfg(feature = "ds3")]
+    allocator: A,
 }
 
 impl<C: Char, A: DLAllocator> DLString<C, A> {
