@@ -3,3 +3,6 @@ name = "shared"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
+
+[dependencies]
+rkyv = "0.7.44"

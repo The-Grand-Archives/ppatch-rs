@@ -1,1 +1,1 @@
-mod paramdex_fetch;
+pub mod paramdex;

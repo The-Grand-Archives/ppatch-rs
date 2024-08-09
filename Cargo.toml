@@ -1,13 +1,25 @@
 [workspace]
 members = [
-    "build",
+    "build_utils",
     "codegen",
     "ppatch",
     "shared"
 ]
+resolver = "2"
 
 [workspace.package]
-name = "ppatch-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["tremwil@gmail.com"]
+
+[profile]
+dev.overflow-checks = false
+test.overflow-checks = false
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = true
+strip = true
+debug-assertions = false
+overflow-checks = false
