@@ -1,0 +1,45 @@
+[package]
+name = "ppatch"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[lib]
+crate-type = ["dylib"]
+
+[dependencies]
+widestring = "1.1.0"
+fmt-derive = "0.1.2"
+fnv = "1.0.7"
+num-traits = "0.2.19"
+shared = { path = "../shared" }
+
+[dev-dependencies]
+rand = "0.8.5"
+criterion = "0.5"
+
+[build-dependencies]
+build = { path = "../build" }
+
+[profile]
+dev.overflow-checks = false
+test.overflow-checks = false
+bench.overflow-checks = false
+
+[features]
+er = []
+ds3 = []
+ac6 = []
+default = [ "er" ]
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = true
+strip = true
+debug-assertions = false
+overflow-checks = false
+
+[[bench]]
+name = "row_patchers"
+harness = false

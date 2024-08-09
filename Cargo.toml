@@ -1,33 +1,13 @@
-[package]
+[workspace]
+members = [
+    "build",
+    "codegen",
+    "ppatch",
+    "shared"
+]
+
+[workspace.package]
 name = "ppatch-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["tremwil@gmail.com"]
-
-[lib]
-crate-type = ["dylib"]
-
-[dependencies]
-widestring = "1.1.0"
-fmt-derive = "0.1.2"
-fnv = "1.0.7"
-num-traits = "0.2.19"
-
-[features]
-default = ["er"]
-ds3 = []
-er = []
-ac6 = []
-
-[profile]
-dev.overflow-checks = false
-test.overflow-checks = false
-bench.overflow-checks = false
-
-[profile.release]
-opt-level = 3
-codegen-units = 1
-lto = true
-strip = true
-debug-assertions = false
-overflow-checks = false

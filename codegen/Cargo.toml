@@ -1,0 +1,12 @@
+[package]
+name = "codegen"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+thiserror = "1.0.63"
+serde = "1.0.164"
+serde_derive = "1.0.164"
+quick-xml = { version = "0.36.1", features = [ "serialize" ] }
+shared = { path = "../shared" }
