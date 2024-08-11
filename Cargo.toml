@@ -1,9 +1,9 @@
 [workspace]
 members = [
-    "build_utils",
     "codegen",
     "ppatch",
-    "shared"
+    "field_metadata",
+    "paramdex"
 ]
 resolver = "2"
 

@@ -9,5 +9,6 @@ pub mod celua;
 pub mod from;
 pub mod param_file;
 pub mod patchers;
+mod r#static;
 pub mod util;
 pub mod vtable;

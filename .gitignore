@@ -1,2 +1,4 @@
 target
 ppatch/.paramdex
+ppatch/field_blocks.bin
+*.log

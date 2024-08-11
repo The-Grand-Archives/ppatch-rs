@@ -8,18 +8,23 @@ authors.workspace = true
 crate-type = ["dylib"]
 
 [dependencies]
+field_metadata = { path = "../field_metadata" }
 widestring = "1.1.0"
 fmt-derive = "0.1.2"
 fnv = "1.0.7"
 num-traits = "0.2.19"
-shared = { path = "../shared" }
+lazy_static = "1.5"
 
 [dev-dependencies]
 rand = "0.8.5"
 criterion = "0.5"
 
 [build-dependencies]
-build_utils = { path = "../build_utils" }
+field_metadata = { path = "../field_metadata" }
+paramdex = { path = "../paramdex" }
+
+log = "0.4.2"
+simple-log = "1.6"
 
 [features]
 er = []

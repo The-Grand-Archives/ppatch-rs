@@ -1,18 +1,6 @@
-use num_traits::PrimInt;
-
 use crate::util::unaligned::Unaligned;
-
-/// Represents a portion (or superset) of a paramdef field, stored in an integer of type `N`.
-#[repr(C)]
-#[derive(Debug, Clone, Copy)]
-pub struct FieldBlock<N: PrimInt> {
-    /// Start index of the field in the [`FieldBlock`] array.
-    pub field_start: u16,
-    /// The offset (as a multiple of `std::mem::size_of::<N>()`) of this field part in the struct.
-    pub offset: u16,
-    /// A bitmask with the bits that belong to the field set to 1.
-    pub mask: N,
-}
+pub use field_metadata::FieldBlock;
+use num_traits::PrimInt;
 
 /// Type representing an ID for a given row patch.
 ///

@@ -35,12 +35,10 @@ impl<N: PrimInt> RowDiff<N> {
             let merged = if a.offset < b.offset {
                 i += 1;
                 a.clone()
-            }
-            else if a.offset > b.offset {
+            } else if a.offset > b.offset {
                 j += 1;
                 b.clone()
-            }
-            else {
+            } else {
                 i += 1;
                 j += 1;
                 PatchedBlock {
@@ -105,8 +103,7 @@ impl<'a, N: PrimInt + Default> RowPatcher<'a, N> for SparseArrayPatcher<N> {
         for (i, fb) in field_blocks.iter().enumerate() {
             let mut b = if fb.mask.is_zero() {
                 N::zero()
-            }
-            else {
+            } else {
                 N::from(max_bit >> fb.mask.leading_zeros() as usize).unwrap()
             };
             if let Some(next) = field_blocks.get(i + 1) {
@@ -169,8 +166,7 @@ impl<'a, N: PrimInt + Default> RowPatcher<'a, N> for SparseArrayPatcher<N> {
             if last_acc != N::max_value() {
                 if let Some(blk) = rd_blocks.last_mut() {
                     blk.mask = blk.mask | !last_acc;
-                }
-                else {
+                } else {
                     rd_blocks.push(PatchedBlock {
                         offset: last_block,
                         diff: N::zero(),

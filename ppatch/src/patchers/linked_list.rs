@@ -122,12 +122,10 @@ impl<'a, N: PrimInt + Default> LinkedListPatcher<'a, N> {
         if let Some(i) = self.free_list_head.as_index() {
             self.free_list_head = self.diffs[i].next_free_slot;
             RowDiffId(i as u16)
-        }
-        else if self.diffs.len() < u16::MAX as usize {
+        } else if self.diffs.len() < u16::MAX as usize {
             self.diffs.push(Default::default());
             RowDiffId((self.diffs.len() - 1) as u16)
-        }
-        else {
+        } else {
             RowDiffId::none()
         }
     }
@@ -191,8 +189,7 @@ impl<'a, N: PrimInt + Default> RowPatcher<'a, N> for LinkedListPatcher<'a, N> {
 
             let diff_start = if last_offset.map(|x| x < fb_offset).unwrap_or(true) {
                 diff.block_diffs.len()
-            }
-            else {
+            } else {
                 diff.block_diffs.len() - 1
             } as u16;
 
@@ -238,8 +235,7 @@ impl<'a, N: PrimInt + Default> RowPatcher<'a, N> for LinkedListPatcher<'a, N> {
                 if let Some((prev_pf, blocks)) = pf.prev.field_and_diff_mut(&mut self.diffs) {
                     prev_pf.next = pf.next;
                     blocks[prev_pf.diff_start as usize..].to_unaligned_slice_mut()
-                }
-                else {
+                } else {
                     &mut live_memory[base_offset..]
                 };
 
